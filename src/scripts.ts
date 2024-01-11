@@ -272,15 +272,55 @@ const findLongestString = (arr: string[]) => {
 console.log(findLongestString(cars));
 
 // ---Task-36-----------------------------------------------------------------------------
+const areAllEqual = (arr: unknown[]) => {
+  const firstElement = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] !== firstElement) {
+      return false;
+    }
+  }
+
+  return true;
+};
+console.log(areAllEqual([1, 1, 1, 1, 2]));
 
 // ---Task-37-----------------------------------------------------------------------------
+const mergeArrays = (...arrays: unknown[]) => [].concat(...arrays);
+console.log(mergeArrays([true, true], [1, 2], ['a', 'b']));
 
 // ---Task-38-----------------------------------------------------------------------------
+interface MyObject {
+  a: number;
+  b: number;
+}
+const sortArrayObjects = (arr: MyObject[]) => arr.sort((a, b) => a.b - b.b);
+console.log(
+  sortArrayObjects([
+    { a: 2, b: 10 },
+    { a: 5, b: 4 },
+  ])
+);
+console.log(
+  sortArrayObjects([
+    { a: 1, b: 7 },
+    { a: 2, b: 1 },
+  ])
+);
 
 // ---Task-39-----------------------------------------------------------------------------
+const mergeAndSort = (arr1: number[], arr2: number[]): number[] => {
+  const mergedArray = [...new Set([...arr1, ...arr2])];
+  return mergedArray.sort((a, b) => a - b);
+};
+
+console.log(mergeAndSort([1, 8, 3], [3, 4, 7, 2, 5, 6]));
 
 // ---Task-40-----------------------------------------------------------------------------
+const sumGreaterThan = (arr: number[], b: number): number =>
+  arr.reduce((sum, element) => (element > b ? sum + element : sum), 0);
 
+console.log(sumGreaterThan([-10, -11, -3, 1, -4], -3));
 // ---Task-41-----------------------------------------------------------------------------
 
 // ---Task-42-----------------------------------------------------------------------------
