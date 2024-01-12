@@ -1,19 +1,11 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable operator-linebreak */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-plusplus */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-console */
 import { logDate } from './logDate';
 
-const cars = [
-  'Audi',
-  'Bmw',
-  'Mercedes',
-  'Ferrari',
-  'Ford',
-  'Wolksvagen',
-  'Toyota',
-];
-console.log(cars);
 logDate();
 
 // ---Task-01-----------------------------------------------------------------------------
@@ -197,7 +189,6 @@ console.log(incrementLetters('sdrshmfetbjxnt'));
 
 // ---Task-24-----------------------------------------------------------------------------
 const getElementFromArray = (a: unknown[], n: number) => a[n - 1];
-console.log(getElementFromArray(cars, 3));
 
 // ---Task-25-----------------------------------------------------------------------------
 const removeFirstThreeElementFromArray = (a: unknown[]) => {
@@ -269,7 +260,6 @@ const findLongestString = (arr: string[]) => {
 
   return longest;
 };
-console.log(findLongestString(cars));
 
 // ---Task-36-----------------------------------------------------------------------------
 const areAllEqual = (arr: unknown[]) => {
@@ -354,11 +344,9 @@ const modifyArray = (arr: unknown[], num: number): unknown[] => {
 // ---Task-44-----------------------------------------------------------------------------
 const saveEveryNth = (arr: unknown[], n: number) => {
   const result: unknown[] = [];
-
   for (let i = n - 1; i < arr.length; i += n) {
     result.push(arr[i]);
   }
-
   return result;
 };
 // ---Task-45-----------------------------------------------------------------------------
@@ -396,23 +384,73 @@ const createDefinedObject = (a: string, b: string) => {
   return result;
 };
 // ---Task-51-----------------------------------------------------------------------------
+const createMergedObject = (
+  keys: string[],
+  values: unknown[]
+): Record<string, unknown> => {
+  const result: Record<string, unknown> = {};
 
+  keys.forEach((key, index) => {
+    result[key] = values[index];
+  });
+
+  return result;
+};
+// console.log(createMergedObject(cars, [1, 2, 3, 4, 5, 6, 7]));
 // ---Task-52-----------------------------------------------------------------------------
+const getObjectKeys = (obj: Record<string, unknown>) => Object.keys(obj);
 
 // ---Task-53-----------------------------------------------------------------------------
+const countOccurrences = (arr: number[]) => {
+  const result: Record<number, number> = {};
+  arr.forEach((num) => {
+    result[num] = (result[num] || 0) + 1;
+  });
+  return result;
+};
 
 // ---Task-54-----------------------------------------------------------------------------
+const areDatesEqual = (date1: Date, date2: Date) =>
+  date1.getTime() === date2.getTime();
 
 // ---Task-55-----------------------------------------------------------------------------
+const getDaysBetweenDates = (date1: Date, date2: Date): number => {
+  const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
+  const differenceInDays = Math.round(
+    Math.abs((date1.getTime() - date2.getTime()) / oneDayInMilliseconds)
+  );
+  return differenceInDays;
+};
 
 // ---Task-56-----------------------------------------------------------------------------
+const areSameDay = (date1: Date, date2: Date): boolean =>
+  date1.getFullYear() === date2.getFullYear() &&
+  date1.getMonth() === date2.getMonth() &&
+  date1.getDate() === date2.getDate();
+console.log(areSameDay(new Date('2000/01/01'), new Date('2010/01/01')));
 
 // ---Task-57-----------------------------------------------------------------------------
+const joinArrays = (arr1: number[], arr2: number[]) => [...arr1, ...arr2];
 
 // ---Task-58-----------------------------------------------------------------------------
+const addStringToArrayEnd = (arr: string[], str: string) => [...arr, str];
 
 // ---Task-59-----------------------------------------------------------------------------
+const addStringToArrayStart = (arr: string[], str: string) => [str, ...arr];
 
 // ---Task-60-----------------------------------------------------------------------------
+const mergeObjects = (
+  obj1: Record<string, unknown>,
+  obj2: Record<string, unknown>
+) => {
+  return { ...obj1, ...obj2 };
+};
+console.log(mergeObjects({ a: 1, b: 2 }, { c: 3, d: 4 }));
 
 // ---Task-61-----------------------------------------------------------------------------
+const addObjectProperty = (
+  obj: Record<string, unknown>,
+  favoriteMovie: string
+): Record<string, unknown> => {
+  return { ...obj, favoriteMovie };
+};
