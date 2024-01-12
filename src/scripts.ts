@@ -290,11 +290,11 @@ const mergeArrays = (...arrays: unknown[]) => [].concat(...arrays);
 console.log(mergeArrays([true, true], [1, 2], ['a', 'b']));
 
 // ---Task-38-----------------------------------------------------------------------------
-interface MyObject {
+interface NumberObject {
   a: number;
   b: number;
 }
-const sortArrayObjects = (arr: MyObject[]) => arr.sort((a, b) => a.b - b.b);
+const sortArrayObjects = (arr: NumberObject[]) => arr.sort((a, b) => a.b - b.b);
 console.log(
   sortArrayObjects([
     { a: 2, b: 10 },
@@ -322,25 +322,79 @@ const sumGreaterThan = (arr: number[], b: number): number =>
 
 console.log(sumGreaterThan([-10, -11, -3, 1, -4], -3));
 // ---Task-41-----------------------------------------------------------------------------
+const generateRange = (min: number, max: number): number[] => {
+  const result: number[] = [];
+
+  for (let i = min; i <= max; i++) {
+    result.push(i);
+  }
+
+  return result;
+};
+
+console.log(generateRange(1, 10));
 
 // ---Task-42-----------------------------------------------------------------------------
+const groupByFirstLetter = (arr: string[]): Record<string, string[]> => {
+  const result: Record<string, string[]> = {};
 
+  arr.forEach((str) => {
+    const firstLetter = str[0].toLowerCase();
+    result[firstLetter] = result[firstLetter] || [];
+    result[firstLetter].push(str);
+  });
+
+  return result;
+};
 // ---Task-43-----------------------------------------------------------------------------
-
+const modifyArray = (arr: unknown[], num: number): unknown[] => {
+  const modifiedArray = num >= 6 ? [num, ...arr] : [0, ...arr];
+  return modifiedArray.slice();
+};
 // ---Task-44-----------------------------------------------------------------------------
+const saveEveryNth = (arr: unknown[], n: number) => {
+  const result: unknown[] = [];
 
+  for (let i = n - 1; i < arr.length; i += n) {
+    result.push(arr[i]);
+  }
+
+  return result;
+};
 // ---Task-45-----------------------------------------------------------------------------
-
+interface CountryObject {
+  continent: string;
+  country: string;
+}
+const getCountryValue = (obj: CountryObject): string => obj.country;
 // ---Task-46-----------------------------------------------------------------------------
+interface RandObject {
+  [key: string]: unknown;
+}
 
+const getProp2Value = (obj: RandObject): any => obj['prop-2'];
 // ---Task-47-----------------------------------------------------------------------------
-
+interface MyObject {
+  [key: string]: string;
+}
+const getValueByKey = (obj: MyObject, key: string) => obj[key];
 // ---Task-48-----------------------------------------------------------------------------
+interface NewObject {
+  [key: string]: any;
+}
+const ifContainsProperty = (obj: NewObject, key: string): boolean =>
+  obj[key] !== undefined;
 
 // ---Task-49-----------------------------------------------------------------------------
-
+const createObject = (a: string): { key: string } => {
+  return { key: a };
+};
 // ---Task-50-----------------------------------------------------------------------------
-
+const createDefinedObject = (a: string, b: string) => {
+  const result: { [key: string]: string } = {};
+  result[a] = b;
+  return result;
+};
 // ---Task-51-----------------------------------------------------------------------------
 
 // ---Task-52-----------------------------------------------------------------------------
