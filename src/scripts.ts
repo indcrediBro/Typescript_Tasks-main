@@ -380,7 +380,7 @@ interface MyObject {
 const getValueByKey = (obj: MyObject, key: string) => obj[key];
 // ---Task-48-----------------------------------------------------------------------------
 interface NewObject {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 const ifContainsProperty = (obj: NewObject, key: string): boolean =>
   obj[key] !== undefined;
